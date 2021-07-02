@@ -13,18 +13,35 @@ public class Senha {
     //Escreva três classes: PasswordForte, PasswordMedia, PasswordFraca, todas elas devem estender Password e codificar um
     // regex de acordo com o nível de segurança que o nome da classe indica.
     private String senha;
-
     public Senha(String senha){
-        String regex = "^.*(?=.{8,})(?=.*\\d)(?=.*[a-zA-Z])|(?=.{8,})(?=.*\\d)(?=.*[!@#$%^&])|(?=.{8,})(?=.*[a-zA-Z])(?=.*[!@#$%^&]).*$";
-        if (senha.matches(regex)) {
-            this.senha = senha;
+
+        if (Senha.validaSenha(senha)) {
+            this.setSenha(senha);
             System.out.println("Senha passou pela validacao");
         }else {
             System.out.println("Senha inválida");
         }
     }
 
+    public static boolean validaSenha(String senha){
+        String regex = "^.*(?=.{8,})(?=.*\\d)(?=.*[a-zA-Z])|(?=.{8,})(?=.*\\d)(?=.*[!@#$%^&])|(?=.{8,})(?=.*[a-zA-Z])(?=.*[!@#$%^&]).*$";
+        if(senha.matches(regex)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public String toString(){
         return this.senha;
     }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
 }
