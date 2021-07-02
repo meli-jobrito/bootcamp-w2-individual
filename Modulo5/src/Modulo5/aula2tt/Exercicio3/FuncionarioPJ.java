@@ -3,10 +3,18 @@ package Modulo5.aula2tt.Exercicio3;
 public class FuncionarioPJ extends Funcionario{
 
     private double valorHora;
+    private int horasTrabalhadas;
+
 
     public FuncionarioPJ(String id, String nome, double valorHora){
         super(id, nome);
         this.setValorHora(valorHora);
+    }
+
+    public FuncionarioPJ(String id, String nome, double valorHora, int horasTrabalhadas){
+        super(id, nome);
+        this.setValorHora(valorHora);
+        this.setHorasTrabalhadas(horasTrabalhadas);
     }
 
     public double getValorHora() {
@@ -17,7 +25,17 @@ public class FuncionarioPJ extends Funcionario{
         this.valorHora = valorHora;
     }
 
-    public double calculaSalario(int horasTrabalhadas) {
-        return horasTrabalhadas * this.getValorHora();
+
+    public int getHorasTrabalhadas() {
+        return horasTrabalhadas;
+    }
+
+    public void setHorasTrabalhadas(int horasTrabalhadas) {
+        this.horasTrabalhadas = horasTrabalhadas;
+    }
+
+    @Override
+    public double calculaSalario() {
+        return this.getValorHora() * this.getHorasTrabalhadas();
     }
 }
